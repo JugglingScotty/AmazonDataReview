@@ -50,3 +50,9 @@ if __name__ == '__main__':
 
     # sum all values in the item total column
     print("Total Spent: " + total_spent(working_df))
+
+    """
+    Improvement Ideas:
+    Other summary counts.  
+    Display the money spent by day.
+    """
