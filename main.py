@@ -63,6 +63,7 @@ if __name__ == '__main__':
 
     """
     Improvement Ideas:
-    Other summary counts.  
+    Other summary counts = Counts by currency, Taxes Paid, Carrier Used, 
     Display the money spent by day.
+    Tracking Number Lookup
     """
