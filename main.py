@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def read_to_df(path):
     """
@@ -7,11 +8,11 @@ def read_to_df(path):
     df = pd.read_csv(path)
     return df
 
-def about_df(dataframe):
+def about_df(df):
     """
     Helpful for getting info about the dataframe.
     """
-    dataframe.info()
+    df.info()
 
 def about_series(srs):
     """
@@ -21,7 +22,7 @@ def about_series(srs):
 
 def total_spent(dataframe):
     #Return a string of sum all values for the item total column.
-    return str(dataframe["Item Total"].sum(0))
+    return dataframe["Item Total"].sum(0)
 
 def convert_to_numeric(df, column_name):
 
@@ -33,6 +34,10 @@ def convert_to_numeric(df, column_name):
 
     # about df_column name
     #about_series(df[column_name])
+
+def average_order_value(df):
+    return np.average(df.loc[:, ['Item Total']])
+
 
 if __name__ == '__main__':
 
@@ -48,8 +53,13 @@ if __name__ == '__main__':
     #Ensure item total column is numeric
     convert_to_numeric(working_df,"Item Total")
 
-    # sum all values in the item total column
-    print("Total Spent: " + total_spent(working_df))
+    # Statistics: Total Cost Spent, Average Order Value
+    added_together = total_spent(working_df)
+    print(f"Total Spent: ${added_together:.2f}.")
+
+    average_order = average_order_value(working_df)
+    print(f"Average Order Value: ${average_order:.2f}.")
+
 
     """
     Improvement Ideas:
