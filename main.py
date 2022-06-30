@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import OrderReviews
 
 def read_to_df(path):
     """
@@ -24,16 +25,7 @@ def total_spent(dataframe):
     #Return a string of sum all values for the item total column.
     return dataframe["Item Total"].sum(0)
 
-def convert_to_numeric(df, column_name):
 
-    # Remove all $ from the column
-    df[column_name] = df[column_name].str.replace("$", "")
-
-    # Convert the passed series to numeric
-    df[column_name] = pd.to_numeric(df[column_name])
-
-    # about df_column name
-    #about_series(df[column_name])
 
 def average_order_value(df):
     return np.average(df.loc[:, ['Item Total']])
@@ -51,7 +43,7 @@ if __name__ == '__main__':
     working_df = read_to_df(filepath)
 
     #Ensure item total column is numeric
-    convert_to_numeric(working_df,"Item Total")
+    OrderReviews.convert_to_numeric(working_df,"Item Total")
 
     # Statistics: Total Cost Spent, Average Order Value
     added_together = total_spent(working_df)
